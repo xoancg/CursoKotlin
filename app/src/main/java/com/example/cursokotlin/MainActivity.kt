@@ -3,6 +3,7 @@ package com.example.cursokotlin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.AlarmClock
 import android.util.Log
 import android.widget.Button
 
@@ -14,9 +15,20 @@ class MainActivity : AppCompatActivity() {
 
 /*        // Lanzamos otra activity
         val intent = Intent(this, Activity2::class.java)
-        // Agora pasamos á nova activity
-        startActivity(intent)*/
 
+        // Send data to A2
+        intent.putExtra("idusuario", 20)*/
+
+        // Setting alarm clock
+        val intent = Intent(AlarmClock.ACTION_SET_ALARM)
+        intent.putExtra(AlarmClock.EXTRA_MESSAGE, "Esperta!")
+        intent.putExtra(AlarmClock.EXTRA_HOUR, 5)
+        intent.putExtra(AlarmClock.EXTRA_MINUTES, 30)
+
+        // Start the other activity (another app activity or system activity)
+        startActivity(intent)
+
+        // Button Go to Activity 2
         val button = findViewById<Button>(R.id.iraA2)
         button.setOnClickListener{
             val intent = Intent(this, Activity2::class.java)
